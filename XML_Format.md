@@ -34,6 +34,7 @@ The `values` element has no attributes and contains 1 or many `<value>` elements
 The `value` element has the following attributes:
  * `transactionId`: the number of the dataset, will be shown at the left side of the TPS in a tree.
  * `context`: a description of the dataset
+
 The `value` element contains one `signedData` and one optional `publicKey` element.
 If the public key is not present, the user must find the right public key and copy it into the form field to verify the integrity of the dataset.
 
@@ -42,4 +43,5 @@ The `signedData` element has the following attributes
  * `format`
  * `encoding`
  * `transactionId`
+
 The `signedData` element encloses the data of the dataset. If it is a string-based format, no line feeds or white spaces have to be at the beginning or end of the element, else the signature can not be verified.
