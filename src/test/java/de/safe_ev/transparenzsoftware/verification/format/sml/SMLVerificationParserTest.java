@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import de.safe_ev.transparenzsoftware.TestUtils;
 import de.safe_ev.transparenzsoftware.Utils;
-import de.safe_ev.transparenzsoftware.gui.views.helper.DetailsList;
+import de.safe_ev.transparenzsoftware.verification.helper.DetailsList;
 import de.safe_ev.transparenzsoftware.i18n.Translator;
 import de.safe_ev.transparenzsoftware.verification.DecodingException;
 import de.safe_ev.transparenzsoftware.verification.EncodingType;

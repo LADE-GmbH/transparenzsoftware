@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import de.safe_ev.transparenzsoftware.gui.views.helper.DetailsList;
+import de.safe_ev.transparenzsoftware.verification.helper.DetailsList;
 import de.safe_ev.transparenzsoftware.i18n.Translator;
 import de.safe_ev.transparenzsoftware.verification.FormatComparisonException;
 import de.safe_ev.transparenzsoftware.verification.RegulationLawException;

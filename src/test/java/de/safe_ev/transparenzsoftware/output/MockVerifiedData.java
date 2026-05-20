@@ -4,7 +4,7 @@ import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.List;
 
-import de.safe_ev.transparenzsoftware.gui.views.helper.DetailsList;
+import de.safe_ev.transparenzsoftware.verification.helper.DetailsList;
 import de.safe_ev.transparenzsoftware.verification.RegulationLawException;
 import de.safe_ev.transparenzsoftware.verification.xml.Meter;
 import de.safe_ev.transparenzsoftware.verification.xml.VerifiedData;

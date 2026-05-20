@@ -6,52 +6,102 @@ Measuring Instruments Directive 2014/32/EU (MID) and national laws (German: Eich
 The common format for this data is OCMF. Please refer to safe-ev.de for further information.
 
 # Install and run
-Be sure that maven is installed (this software was compiled/tested with maven 3.9.6) [https://maven.apache.org/](https://maven.apache.org/).
 
-First, checkout the [https://github.com/SAFE-eV/SAFESealing](SAFESealing software) as a separate package and run 
+Be sure that Maven is installed (this software was compiled/tested with Maven 3.9.6): [https://maven.apache.org/](https://maven.apache.org/)
 
-`mvn clean install -DskipTests`
+To package the application run:
 
-Tests can be skipped, they may take a long time.
+```bash
+mvn clean package
+```
 
-To package the transparenzsoftware application run:
+This will create an executable jar in the `target` folder: `transparenzsoftware.jar`.
 
-`mvn clean package` 
+Run with:
 
-This will create an executable jar in the `target` folder `transparenzsoftware.jar`.
+```bash
+java -jar target/transparenzsoftware.jar -f <path-to-xml-file>
+```
 
-Run with: 
-
-`java -jar target/transparenzsoftware.jar`
-  
 A lot of sample OCMF files and other formats can be found in the `src/test/resources` directory.
-  
+
 ## Options
-* `-v` enables the logging
-* `-cli` runs it as cli app
-* `-f <path>` verifies the file runned in cli
-* `-h` prints help text
+
+| Option | Description |
+|--------|-------------|
+| `-f <path>` | Path to the XML file to verify (required) |
+| `-o <path>` | Output file path. If omitted, result is printed to stdout |
+| `-w` | Overwrite the output file if it already exists |
+| `-l <locale>` | Language for messages: `en_EN` or `de_DE` (default: system locale) |
+| `-v` | Enable verbose logging |
+| `-h` | Print help text |
 
 ## Development
-In IntelliJ open the project as a maven project (choose the `pom.xml` file).
 
-### Krypto stuff for testing 
-Create a public key from the commandline:
+In IntelliJ open the project as a Maven project (choose the `pom.xml` file).
+
+### Krypto stuff for testing
+
+Create a public key from the command line:
+
 ```bash
-openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-192  -pkeyopt ec_param_enc:named_curve
-openssl openssl ecparam -name secp192r1 -out pvk_file.pem
+openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-192 -pkeyopt ec_param_enc:named_curve
+openssl ecparam -name secp192r1 -out pvk_file.pem
 openssl ec -in pvk_file.pem -pubout -out public_key_file.pem
 ```
 
 ## Basic structure
-The main entry point of the application is the `App` class. There is the 
-static main function which does parameter parsing and initializing and starting 
-the app.
 
-The application has 4 major packages.  
-* `gui` this holds the `Java Swing` classes for rendering the gui. The main entry
- point in this package is the `TransparenzSoftwareMain` class which holds, all 
- the components and event listeners.
-* `i18n` holds a class wrapping the loading of translated strings
-* `output` contains classes for generating the resulting xml
-* `verification` contains the logic to load and verify all implemented formats
+The main entry point of the application is the `Transparenzsoftware` class. It handles parameter parsing and delegates to `ConsoleFileProcessor` for verification.
+
+The application has 3 major packages:
+
+- `i18n` — wraps loading of translated strings
+- `output` — contains classes for generating the resulting XML output
+- `verification` — contains the logic to load and verify all implemented formats
+  - `verification.helper` — shared data-structure helpers (`DetailsList`, `ValueIndexHolder`, `ValueMapBuilder`)
+
+---
+
+# LADE-GmbH Fork: Changes from Upstream
+
+This repository is a fork of the original SAFE e.V. transparenzsoftware. The following changes have been made.
+
+## GUI removed
+
+The original application included a Java Swing GUI. This fork removes it entirely — the application is now CLI-only.
+
+**Deleted:**
+- Entire `de.safe_ev.transparenzsoftware.gui` package (35 classes): Swing windows, panels, dialogs, listeners, custom widgets, and `TransparenzSoftwareMain`
+- 8 Swing integration tests (`AbstractAppTest` and all `App*Test` classes) that drove the GUI
+
+**Changed:**
+- `Transparenzsoftware.java`: removed the `UIManager`/GUI branch; the app now runs in CLI mode directly. The `--cli` flag is no longer needed and has been removed.
+- `Transparenzsoftware.java`: the `-f` flag is now required (previously optional when the GUI was used to open files)
+
+**Moved (not deleted):** `DetailsList`, `ValueIndexHolder`, `ValueMapBuilder` had no Swing code but were placed in `gui.views.helper`. They have been moved to `verification.helper` where they logically belong. All imports updated.
+
+## GitHub Packages publishing
+
+- `pom.xml`: added `<distributionManagement>` pointing to `https://maven.pkg.github.com/LADE-GmbH/transparenzsoftware`
+- `pom.xml`: added `<repositories>` entry for `https://maven.pkg.github.com/LADE-GmbH/transparenzsoftware_sealing` so the `safesealing:0.9.2` dependency resolves during CI
+- `.github/workflows/publish.yml`: new workflow triggered on `v*` tags and `workflow_dispatch`; runs `mvn deploy -DskipTests` using `GITHUB_TOKEN`
+
+**Consumer `pom.xml` snippet:**
+
+```xml
+<repositories>
+  <repository>
+    <id>github</id>
+    <url>https://maven.pkg.github.com/LADE-GmbH/transparenzsoftware</url>
+  </repository>
+</repositories>
+
+<dependency>
+  <groupId>de.safe_ev</groupId>
+  <artifactId>de.safe_ev.transparenzsoftware</artifactId>
+  <version>1.4.1</version>
+</dependency>
+```
+
+A GitHub Personal Access Token with `read:packages` scope is required in `~/.m2/settings.xml`.

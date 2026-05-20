@@ -19,7 +19,7 @@ import org.junit.rules.ExpectedException;
 import org.mockito.MockitoAnnotations;
 
 import de.safe_ev.transparenzsoftware.TestUtils;
-import de.safe_ev.transparenzsoftware.gui.views.helper.DetailsList;
+import de.safe_ev.transparenzsoftware.verification.helper.DetailsList;
 import de.safe_ev.transparenzsoftware.output.MockVerificationContainedKeyParser;
 import de.safe_ev.transparenzsoftware.output.MockVerificationParser;
 import de.safe_ev.transparenzsoftware.verification.format.alfen.AlfenVerificationParser;

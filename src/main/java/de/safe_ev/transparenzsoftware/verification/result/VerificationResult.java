@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import de.safe_ev.transparenzsoftware.gui.views.helper.DetailsList;
+import de.safe_ev.transparenzsoftware.verification.helper.DetailsList;
 import de.safe_ev.transparenzsoftware.verification.RegulationLawException;
 import de.safe_ev.transparenzsoftware.verification.ValidationException;
 import de.safe_ev.transparenzsoftware.verification.format.ocmf.OCMFVerifiedData;

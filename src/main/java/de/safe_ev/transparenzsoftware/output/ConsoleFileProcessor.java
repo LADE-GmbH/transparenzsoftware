@@ -14,8 +14,8 @@ import jakarta.xml.bind.JAXBException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import de.safe_ev.transparenzsoftware.gui.views.helper.ValueIndexHolder;
-import de.safe_ev.transparenzsoftware.gui.views.helper.ValueMapBuilder;
+import de.safe_ev.transparenzsoftware.verification.helper.ValueIndexHolder;
+import de.safe_ev.transparenzsoftware.verification.helper.ValueMapBuilder;
 import de.safe_ev.transparenzsoftware.i18n.Translator;
 import de.safe_ev.transparenzsoftware.verification.TransactionValidationException;
 import de.safe_ev.transparenzsoftware.verification.VerificationParser;
