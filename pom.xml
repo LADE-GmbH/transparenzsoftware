@@ -4,7 +4,7 @@
 
 	<groupId>de.safe_ev</groupId>
 	<artifactId>de.safe_ev.transparenzsoftware</artifactId>
-	<version>1.4.1-lade-1</version>
+	<version>1.4.1-lade-2</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -139,9 +139,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.LADE-GmbH.transparenzsoftware_sealing</groupId>
-			<artifactId>safesealing</artifactId>
-			<version>v0.9.2-lade</version>
+			<groupId>com.github.LADE-GmbH</groupId>
+			<artifactId>transparenzsoftware_sealing</artifactId>
+			<version>0.9.2-lade-2</version>
 		</dependency>
 
 	</dependencies>
