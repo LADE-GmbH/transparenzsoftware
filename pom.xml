@@ -4,7 +4,7 @@
 
 	<groupId>de.safe_ev</groupId>
 	<artifactId>de.safe_ev.transparenzsoftware</artifactId>
-	<version>1.4.1-lade</version>
+	<version>1.4.1-lade-1</version>
 	<packaging>jar</packaging>
 
 	<properties>
