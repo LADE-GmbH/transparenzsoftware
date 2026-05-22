@@ -4,7 +4,7 @@
 
 	<groupId>de.safe_ev</groupId>
 	<artifactId>de.safe_ev.transparenzsoftware</artifactId>
-	<version>1.4.1</version>
+	<version>1.4.1-lade</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -37,8 +37,8 @@
 
 	<repositories>
 		<repository>
-			<id>github</id>
-			<url>https://maven.pkg.github.com/LADE-GmbH/transparenzsoftware_sealing</url>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
 
@@ -139,9 +139,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.metabit.custom.safe</groupId>
+			<groupId>com.github.LADE-GmbH.transparenzsoftware_sealing</groupId>
 			<artifactId>safesealing</artifactId>
-			<version>0.9.2</version>
+			<version>v0.9.2-lade</version>
 		</dependency>
 
 	</dependencies>
