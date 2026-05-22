@@ -4,13 +4,13 @@
 
 	<groupId>com.github.LADE-GmbH</groupId>
 	<artifactId>transparenzsoftware</artifactId>
-	<version>1.4.1-lade-3</version>
+	<version>1.4.1-lade-4</version>
 	<packaging>jar</packaging>
 
 	<properties>
 		<bouncycastle.version>1.72</bouncycastle.version>
-		<jdk.version>17</jdk.version>
-		<jdk.target.version>17</jdk.target.version>
+		<jdk.version>25</jdk.version>
+		<jdk.target.version>25</jdk.target.version>
 		<file.encoding>UTF-8</file.encoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
