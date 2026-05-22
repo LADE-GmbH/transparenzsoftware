@@ -4,7 +4,7 @@
 
 	<groupId>com.github.LADE-GmbH</groupId>
 	<artifactId>transparenzsoftware</artifactId>
-	<version>1.4.1-lade-4</version>
+	<version>1.4.1-lade-5</version>
 	<packaging>jar</packaging>
 
 	<properties>
