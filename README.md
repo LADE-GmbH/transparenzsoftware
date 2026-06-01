@@ -15,12 +15,13 @@ To package the application run:
 mvn clean package
 ```
 
-This will create an executable jar in the `target` folder: `transparenzsoftware.jar`.
+This will create an executable (shaded) jar in the `target` folder: `transparenzsoftware-shaded.jar`.
+The plain `transparenzsoftware.jar` is the thin library artifact (no bundled dependencies) used by downstream Maven consumers — it is not runnable on its own.
 
 Run with:
 
 ```bash
-java -jar target/transparenzsoftware.jar -f <path-to-xml-file>
+java -jar target/transparenzsoftware-shaded.jar -f <path-to-xml-file>
 ```
 
 A lot of sample OCMF files and other formats can be found in the `src/test/resources` directory.

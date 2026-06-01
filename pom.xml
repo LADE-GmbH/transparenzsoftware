@@ -4,7 +4,7 @@
 
 	<groupId>com.github.LADE-GmbH</groupId>
 	<artifactId>transparenzsoftware</artifactId>
-	<version>1.4.1-lade-6</version>
+	<version>1.4.1-lade-7</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.13.1</junit.version>
 		<jsml.version>1.1.2</jsml.version>
-		<log4j-core.version>2.19.0</log4j-core.version>
+		<log4j-core.version>2.25.1</log4j-core.version>
 		<commons-cli.version>1.4</commons-cli.version>
 		<jaxb.version>2.4.0</jaxb.version>
 		<javax.activation.version>1.1.1</javax.activation.version>
@@ -238,6 +238,21 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
+							<!--
+							  Attach the uber-jar under the "shaded" classifier instead of
+							  replacing the main artifact. The MAIN published artifact stays a
+							  thin jar with a normal pom, so library consumers (e.g. the Spring
+							  Boot ocpp-charge-service) resolve log4j as a normal managed
+							  transitive dependency rather than getting log4j classes baked into
+							  the jar. This prevents the log4j core/api version split that caused
+							  the startup NoSuchMethodError (sc-46036).
+							  Standalone CLI/GUI use must now run transparenzsoftware-shaded.jar.
+							-->
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<shadedClassifierName>shaded</shadedClassifierName>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
+							<!-- stable on-disk name for standalone use, independent of version -->
+							<finalName>transparenzsoftware-shaded</finalName>
 							<transformers>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<mainClass>de.safe_ev.transparenzsoftware.Transparenzsoftware</mainClass>
