@@ -65,7 +65,6 @@ The application has 3 major packages:
 ---
 
 # LADE-GmbH Fork: Changes from Upstream
-
 This repository is a fork of the original SAFE e.V. transparenzsoftware. The following changes have been made.
 
 ## GUI removed
@@ -81,6 +80,9 @@ The original application included a Java Swing GUI. This fork removes it entirel
 - `Transparenzsoftware.java`: the `-f` flag is now required (previously optional when the GUI was used to open files)
 
 **Moved (not deleted):** `DetailsList`, `ValueIndexHolder`, `ValueMapBuilder` had no Swing code but were placed in `gui.views.helper`. They have been moved to `verification.helper` where they logically belong. All imports updated.
+
+Hosted on [![](https://jitpack.io/v/LADE-GmbH/transparenzsoftware.svg)](https://jitpack.io/#LADE-GmbH/transparenzsoftware)
+
 
 ## GitHub Packages publishing
 
